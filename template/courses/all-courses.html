@@ -1,0 +1,33 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+<div class="courses-area">
+    <div class="container-fluid">
+        <div class="row">
+            {% for i in courses %}
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
+                    <div class="courses-inner res-mg-b-30">
+                        <div class="courses-title">
+                            <a href="#"><img src="{{i.img.url}}" alt=""></a>
+                            <h2>{{i.title}}</h2>
+                        </div>
+                        <div class="courses-alaltic">
+                            <span class="cr-ic-r"><span class="course-icon"><i class="fa fa-clock"></i></span> 1 Year</span>
+                            <span class="cr-ic-r"><span class="course-icon"><i class="fa fa-heart"></i></span> 50</span>
+                            <span class="cr-ic-r"><span class="course-icon"><i class="fa fa-dollar"></i></span> 500</span>
+                        </div>
+                        <div class="course-des">
+                            <p><span><i class="fa fa-clock"></i></span> <b>Duración:</b> {{i.duration}} Meses</p>
+                            <p><span><i class="fa fa-clock"></i></span> <b>Profesor:</b>&nbsp;{{i.teacher.first_name}}&nbsp;&nbsp;{{i.teacher.surname}}</p>
+                            <p><span><i class="fa fa-clock"></i></span> <b>Estudiantes:</b> 100+</p>
+                        </div>
+                        <div class="product-buttons">
+                            <button type="button" class="button-default cart-btn">Saber más</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

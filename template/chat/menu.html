@@ -1,0 +1,48 @@
+<div class="col-md-3 col-md-3 col-sm-3 col-xs-12">
+    <div class="hpanel shadow-inner responsive-mg-b-30">
+        <div class="panel-body">
+            <a href="{% url 'Compose_Email' 0 %}" class="btn btn-success compose-btn btn-block m-b-md">Redactar Correo</a>
+            <ul class="mailbox-list">
+                <li>
+                    <a href="{% url 'Inbox' %}">
+							<span class="pull-right">{{request.session.inbox}}</span>
+							<i class="fa fa-envelope"></i> Bandeja de Entrada
+						</a>
+                </li>
+                <li>
+                    <a href="{% url 'Email_Sent' %}"><span class="pull-right">{{request.session.sent}}</span><i class="fa fa-paper-plane"></i> Enviados</a>
+                </li>
+                <li>
+                    <a href="{% url 'Trash' %}"><i class="fa fa-trash"></i> Papelera</a>
+                </li>
+            </ul>
+            <hr>
+            <!-- <ul class="mailbox-list">
+                <li>
+                    <a href="#"><i class="fa fa-plane text-danger"></i> Travel</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart text-warning"></i> Finance</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users text-info"></i> Social</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-tag text-success"></i> Promos</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-flag text-primary"></i> Updates</a>
+                </li>
+            </ul> -->
+            <!-- <hr>
+            <ul class="mailbox-list">
+                <li>
+                    <a href="#"><i class="fa fa-gears"></i> Settings</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-info-circle"></i> Support</a>
+                </li>
+            </ul> -->
+        </div>
+    </div>
+</div>

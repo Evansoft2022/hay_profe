@@ -1,0 +1,220 @@
+{% extends '../base.html' %}
+{% block content %}
+<style>
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+	  -webkit-appearance: none; 
+	  margin: 0; 
+	}
+	input[type=number] { -moz-appearance:textfield; }
+</style>
+{% if request.session.teacher_email %}
+<div class="basic-form-area mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                <div class="sparkline8-list mt-b-30">
+                    <div class="sparkline8-hd">
+                        <div class="main-sparkline8-hd">
+                            <h1>Retira dinero de tu billetera virtual</h1>
+                        </div>
+                    </div>
+                    <div class="sparkline8-graph">
+                        <div class="basic-login-form-ad">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                    <div class="basic-login-inner">
+                                        
+                                        <form class="form">
+                                            <div class="form-group-inner">
+                                                <label>Monto a Retirar <br><strong style="color: red;">*</strong><small>un minimo de 10.000COP se cobrara un 2.65% como porcentaje de retiro</small></label>
+                                                <input type="number" min="10000" class="form-control amount_teacher" placeholder="Ingrese el valor" />
+                                            </div>
+                                            <div class="login-btn-inner">
+                                                <div class="inline-remember-me">
+                                                    <button class="btn btn-sm btn-primary pull-right login-submit-cs">Recargar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="basic-form-area mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                <div class="sparkline8-list mt-b-30">
+                    <div class="sparkline8-hd">
+                        <div class="main-sparkline8-hd">
+                            <h1>Recarga tu billetera virtual</h1>
+                        </div>
+                    </div>
+                    <div class="sparkline8-graph">
+                        <div class="basic-login-form-ad">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="basic-login-inner">
+                                        
+                                        <form>
+                                            <div class="form-group-inner">
+                                                <label>Monto a Recargar <strong style="color: red;">*</strong><small>un minimo de 10.000COP</small></label>
+                                                <input type="number" min="10000" class="form-control amount" placeholder="Ingrese el valor" />
+                                            </div>
+                                            <div class="login-btn-inner">
+                                                <div class="inline-remember-me">
+                                                    <button id="Pago" class="btn btn-sm btn-primary pull-right login-submit-cs">Recargar</button>
+                                                  
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<button hidden type="button" class="btn btn-primary alert" data-toggle="modal" data-target="#exampleModal"></button>
+<button hidden type="button" class="btn btn-primary success" data-toggle="modal" data-target="#exampleModals"></button>
+<button hidden type="button" class="btn btn-primary error" data-toggle="modal" data-target="#exampleModalE"></button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ALERTA!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Mira ignorante no lees?. El monto es mayor de DIEZ MIL PESOS COLOMBIANOS(1.0000). Bruto de mierda!.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModals" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">APROBADA!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="success_message"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalE" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">RECHAZAR!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="error_message"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div style="margin-bottom: 377px;"></div>
+
+
+{% endblock %}
+{% block script %}
+<script>
+    $("#Pago").click(function(e){
+    	e.preventDefault();
+    	let status;
+    	var amount = parseInt($(".amount").val());
+    	if( amount > 10000){
+    		var checkout = new WidgetCheckout({
+	          currency: 'COP',
+	          amountInCents: amount * 100,
+	          reference: 'AD{{number}}',
+	          publicKey: 'pub_test_Zs0LVNeaLOG440kKSAp0YRXBO8M0VBP0',
+	          redirectUrl: 'https://transaction-redirect.wompi.co/check', // Opcional
+	          taxInCents: { // Opcional
+	            vat: 1900,
+	            consumption: 800
+	          }
+	        });
+	        checkout.open(function ( result ) {
+	          var transaction = result.transaction
+	          console.log('Transaction ID: ', transaction.id)
+	          console.log('Transaction object: ', transaction)
+	          status = transaction.status
+	          if(status == "APPROVED")
+	          {
+	            $.ajax({
+	            	url : "{% url 'Method_Paymeth' %}",
+	                data:{'amount':amount,'status':status},
+	                success: function(data){
+	                	if(status == "APPROVED"){
+	                		$(".success_message").text("Se ha cargado en su billetera el monto de "+amount);
+	                		$(".success").click();
+	                		$(".amount").val("");
+                            $(".saldo").text(data)
+	                	}
+	                	else{
+	                		$(".error_message").text("Transacción Rechazada");
+	                		$(".error").click();
+	                	}
+	                }
+	            });
+	          }
+	          
+	        });
+    	}
+    	else{
+
+    		$(".alert").click();
+
+    	}
+
+        
+        
+    });
+</script>
+{% endblock %}

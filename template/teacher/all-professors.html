@@ -1,0 +1,46 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+<div class="contacts-area mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+            {% for i in teacher %}
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="hpanel hblue contact-panel contact-panel-cs responsive-mg-b-30">
+                        <div class="panel-body custom-panel-jw">
+                            <div class="social-media-in">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </div>
+                            <img alt="logo" class="img-circle m-b" src="{{i.img.url}}">
+                            <h3><a href="">{{i.first_name}}&nbsp;&nbsp;{{i.surname}}</a></h3>
+                            <p class="all-pro-ad">London, LA</p>
+                            <p>
+                                {{i.description|truncatechars:113}}
+                            </p>
+                        </div>
+                        <div class="panel-footer contact-footer" style="border-radius: 10px !important;">
+                            <div class="professor-stds-int">
+                                <div class="professor-stds">
+                                    <div class="contact-stat">
+                                        <a href="{% url 'Sent_Message' i.pk %}"  class="btn btn-success">Mensaje</a>
+                                    </div>
+                                </div>
+                                <div class="professor-stds">
+                                    <div class="contact-stat" style="margin-left: 110px;"></div>
+                                </div>
+                                <div class="professor-stds">
+                                    <a href="{% url 'Teacher_Profile' i.pk %}" class="btn btn-success">Perfil</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div><br>
+{% endblock %}
+{% block script %}
+{% endblock %}

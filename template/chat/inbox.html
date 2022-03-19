@@ -1,0 +1,86 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+	<div class="mailbox-area mg-b-15">
+	    <div class="container-fluid">
+	        <div class="row">
+	            {% include './menu.html' %}
+	            <div class="col-md-9 col-md-9 col-sm-9 col-xs-12">
+	                <div class="hpanel">
+	                    <div class="panel-heading hbuilt mailbox-hd">
+	                        <div class="text-center p-xs font-normal">
+	                            <div class="input-group">
+	                                <input type="text" class="form-control input-sm" placeholder="Buscar correo electrónico en su bandeja de entrada..."> <span class="input-group-btn active-hook"> <button type="button" class="btn btn-sm btn-default">Buscar
+										</button> </span></div>
+	                        </div>
+	                    </div>
+	                    <div class="panel-body">
+	                        <div class="row">
+	                            <div class="col-md-6 col-md-6 col-sm-6 col-xs-8">
+	                                <div class="btn-group ib-btn-gp active-hook mail-btn-sd mg-b-15">
+	                                    <button onclick="location.reload(true);" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i> Actualizar</button>
+	                                    <!-- <button class="btn btn-default btn-sm"><i class="fa fa-eye"></i></button>
+	                                    <button class="btn btn-default btn-sm"><i class="fa fa-exclamation"></i></button>
+	                                    <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+	                                    <button class="btn btn-default btn-sm"><i class="fa fa-check"></i></button>
+	                                    <button class="btn btn-default btn-sm"><i class="fa fa-tag"></i></button> -->
+	                                </div>
+	                            </div>
+	                            <div class="col-md-6 col-md-6 col-sm-6 col-xs-4 mailbox-pagination">
+	                                <!-- <div class="btn-group ib-btn-gp active-hook mail-btn-sd mg-b-15">
+	                                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i></button>
+	                                    <button class="btn btn-default btn-sm"><i class="fa fa-arrow-right"></i></button>
+	                                </div> -->
+	                            </div>
+	                        </div>
+	                        <div class="table-responsive ib-tb">
+	                            <table class="table table-hover table-mailbox">
+	                                <tbody>
+	                                	{% if message %}
+		                                	{% for i in message %}
+		                                    <tr class="{% if not i.unread %}unread{% endif %}{{i.pk}}">
+		                                    	
+		                                        <td class="">
+		                                            <div class="checkbox checkbox-single checkbox-success">
+		                                                <button type="button" id="{{i.pk}}" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+		                                            </div>
+		                                        </td>
+		                                        <td><a href="{% url 'View_Email' i.pk %}">{{i.from_name}}</a></td>
+		                                        <td><a href="{% url 'View_Email' i.pk %}">{{i.message}}</a>
+		                                        </td>
+		                                        <td><i class="fa fa-paperclip"></i></td>
+		                                        <td class="text-right mail-date">{{i.date}}</td>
+		                                    </tr>
+		                                    {% endfor %}
+	                                    {% endif %}
+	                                </tbody>
+	                            </table>
+	                        </div>
+	                    </div>
+	                    <div class="panel-footer ib-ml-ft">
+	                        <i class="fa fa-eye"> </i> 6 unread
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}
+{% block script %}
+
+	<script>
+		$(document).ready(function(){
+			$("button[type='button']").click(function(){
+				let id = this.id;
+				$.ajax({
+					url:'{% url "Trash_Email" %}',
+					data:{'pk':id},
+					success: function(data){
+						$("."+id).remove();
+					}
+				});
+			});
+		});
+	</script>
+
+{% endblock %}

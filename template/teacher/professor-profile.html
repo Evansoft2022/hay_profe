@@ -1,0 +1,336 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+<div class="single-pro-review-area mt-t-30 mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="profile-info-inner">
+                    <div class="profile-img">
+                        <form id="form_photo_profile" action="{% url 'Setting_Profile' teacher.pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+                            <img class="photo_profile" src="{{teacher.img.url}}" alt="" />
+                            <input type="text" hidden class="pk" value="{{teacher.pk}}" name="pk">
+                            <input type="file" hidden name="photo_profile" id="file">
+                        </form>
+                    </div>
+                    <div class="profile-details-hr">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="address-hr">
+                                    <p><b>Nombre </b><br /> {{teacher.first_name}}&nbsp;&nbsp;{{teacher.surname}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                    <p><b>Departamento </b><br /> Antioquia</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="address-hr">
+                                    <p><b>Correo Electrónico</b><br /> {{teacher.email}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+                                <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
+                                    <p><b>Teléfono </b><br /> +57{{teacher.phone}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="address-hr">
+                                    <p><b>Materias</b>
+                                        <div class="row">
+                                            {% if subject %}
+                                                {% for i in subject %}
+                                                    <p>{{i.name}}</p>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <div class="address-hr">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <h3>500</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <div class="address-hr">
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <h3>900</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <div class="address-hr">
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <h3>600</h3>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
+                    <ul id="myTabedu1" class="tab-review-design">
+                        <li class="active"><a href="#description">Actividad</a></li>
+                        <li><a href="#reviews"> Biografia</a></li>
+                        {% if request.session.teacher_email == teacher.email %}
+                            <li><a href="#INFORMATION">Actualización de Detalles</a></li>
+                        {% endif %}
+                    </ul>
+                    <div id="myTabContent" class="tab-content custom-product-edit">
+                        <div class="product-tab-list tab-pane fade active in" id="description">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div class="chat-discussion" style="height: auto">
+                                            <div class="chat-message">
+												<div class="profile-hdtc">
+													 <img class="message-avatar" src="{% static 'img/contact/1.jpg' %}" alt="">
+												</div>
+                                                <div class="message">
+                                                    <a class="message-author" href="#"> Michael Smith </a>
+                                                    <span class="message-date"> lun, 26 de enero de 2015 - 18:39:23 </span>
+                                                    <span class="message-content">Con la actividad del mensaje, los propietarios, administradores y miembros con permiso pueden ver cuántas personas han interactuado con un mensaje determinado en Slack. Puede utilizar la actividad de los mensajes para medir el impacto de los anuncios y las campañas de comunicación interna para su organización. 
+													</span>
+                                                    <div class="m-t-md mg-t-10">
+                                                        <a class="btn btn-xs btn-default"><i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;Me gusta </a>
+                                                        <!-- <a class="btn btn-xs btn-success"><i class="fa fa-heart"></i> Love</a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-tab-list tab-pane fade" id="reviews">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                <div class="address-hr biography">
+                                                     <p><b>Nombre completo</b><br /> 
+                                                        {{teacher.first_name}}&nbsp;&nbsp;
+                                                        {{teacher.second_name}}&nbsp;&nbsp;
+                                                        {{teacher.surname}}
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                <div class="address-hr biography">
+                                                    <p><b>Móvil</b><br /> {{teacher.phone}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                <div class="address-hr biography">
+                                                    <p><b>Correo electrónico </b><br />{{teacher.email}}</p>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                <div class="address-hr biography">
+                                                    <p><b>Location</b><br /> UK</p>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="content-profile">
+                                                    <p>{{teacher.description}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row mg-b-15">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="skill-title">
+                                                            <h2>Educación</h2>
+                                                            <hr />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ex-pro">
+                                                    <ul>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mg-b-15">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="skill-title">
+                                                            <h2>Experiencia</h2>
+                                                            <hr />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ex-pro">
+                                                    <ul>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="skill-title">
+                                                            <h2>Materias</h2>
+                                                            <hr />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ex-pro">
+                                                    <ul>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                        <li><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if request.session.teacher_email == teacher.email %}
+                            <div class="product-tab-list tab-pane fade" id="INFORMATION">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="review-content-section">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input name="number" value="{{teacher.first_name}}" type="text" class="form-control" placeholder="First Name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="{{teacher.surname}}" placeholder="Last Name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="{{teacher.address}}" placeholder="Address">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" value="{{teacher.phone}}" placeholder="Phone">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <input type="text" class="form-control" placeholder="Department"> -->
+                                                        <textarea class="form-control" rows="3" style="resize: none;">{{teacher.description}}</textarea>
+                                                    </div>
+                                                    <!-- <div class="file-upload-inner ts-forms">
+                                                        <div class="input prepend-big-btn">
+                                                            <label class="icon-right" for="prepend-big-btn">
+    																<i class="fa fa-download"></i>
+    															</label>
+                                                            <div class="file-button">
+                                                                Document
+                                                                <input type="file" onchange="document.getElementById('prepend-big-btn').value = this.value;">
+                                                            </div>
+                                                            <input type="text" id="prepend-big-btn" placeholder="no file selected">
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <!-- <div class="form-group sm-res-mg-15 tbpf-res-mg-15">
+                                                        <input type="text" class="form-control" placeholder="Description">
+                                                    </div> -->
+                                                    <div class="form-group">
+                                                        <select class="form-control">
+    														<option>Select Gender</option>
+    														<option>Male</option>
+    														<option>Female</option>
+    													</select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <select class="form-control">
+                                                            <option>{{teacher.city.name}}</option>
+                                                            {% for i in city %}
+                                                                {% if i.name != teacher.city.name %}
+    														      <option>{{i.name}}</option>
+                                                                {% endif %}
+                                                            {% endfor %}
+    													</select>
+                                                    </div>
+                                                    <!-- <div class="form-group">
+                                                        <select class="form-control">
+    															<option>Select state</option>
+    															<option>Gujarat</option>
+    															<option>Maharastra</option>
+    															<option>Rajastan</option>
+    															<option>Maharastra</option>
+    															<option>Rajastan</option>
+    															<option>Gujarat</option>
+    														</select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <select class="form-control">
+    															<option>Select city</option>
+    															<option>Surat</option>
+    															<option>Baroda</option>
+    															<option>Navsari</option>
+    															<option>Baroda</option>
+    															<option>Surat</option>
+    														</select>
+                                                    </div> -->
+                                                    <!-- <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Website URL">
+                                                    </div>
+                                                    <input type="number" class="form-control" placeholder="Mobile no."> -->
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="payment-adress mg-t-15">
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light mg-b-15">Guardar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+
+    <script>
+        $(document).ready(function(){
+            $("#file").hide();
+            $(".pk").hide();
+            $(".photo_profile").click(function(){
+                    $("#file").click();
+                }
+            );
+            $("#file").on('change',function(){
+                alert("Hola");
+                $("#form_photo_profile").submit();
+            });
+        });
+    </script>
+
+
+{% endblock %}
