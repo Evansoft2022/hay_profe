@@ -1,5 +1,2 @@
 [
-	{"id": 1, "sender": 6, "body": "Hola, en que te puedo ayudar?", "time": "Feb 01, 2022 17:23:01", "status": 1, "recvId": 5, "recvIsGroup": false}, 
-	{"id": 1, "sender": 5, "body": "Hola", "time": "Mar 18 2022 16:21:26", "status": 1, "recvId": 6, "recvIsGroup": false}, 
-	{"id": 2, "sender": 5, "body": "Hola", "time": "Mar 18 2022 16:40:49", "status": 1, "recvId": 6, "recvIsGroup": false}
 ]

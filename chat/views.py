@@ -68,7 +68,7 @@ def Compose_Email(request,pk):
 			email = user_from.email
 	except Student.DoesNotExist:
 		user_from = None
-	
+
 	return render(request,'chat/compose_email.html',{'email':email})
 
 def View_Email(request,pk):
@@ -76,7 +76,7 @@ def View_Email(request,pk):
 	message.unread = True
 	message.save()
 
-	
+
 	try:
 		attachments = Attachments.objects.filter(message_email =pk)
 	except Attachments.DoesNotExist:
@@ -86,7 +86,7 @@ def View_Email(request,pk):
 		list_data = [url.file.url for url in attachments ]
 		create_z = Create_Zip()
 		return HttpResponse(create_z.Run(list_data))
-	
+
 	totals = len(attachments) if attachments is not None else 0
 
 	if attachments is not None:
@@ -136,15 +136,15 @@ def Trash_Email(request):
 
 def Delete_Email(request):
 	Message_Email.objects.get(pk=request.GET.get('pk')).delete()
-	return HttpResponse("Hola")	
+	return HttpResponse("Hola")
 
 def Chat_Private(request):
 	try:
-		with open(r'C:\Users\Lenovo\Desktop\hay_profe-main\static\data_user.json','r') as file:
+		with open('/home/hayprofe/hay_profe/data_user.json','r') as file:
 			print(json.loads(file.read()))
 	except Exception as e:
 		pass
-	
+
 
 
 	obj = Obj(request)[0]
@@ -153,7 +153,7 @@ def Chat_Private(request):
 	except Teacher.DoesNotExist:
 		user = Student.objects.get(pk=request.session['pk'])
 
-	with open(r'C:\Users\Lenovo\Desktop\hay_profe-main\static\data_user.json','w') as file:
+	with open('/home/hayprofe/hay_profe/data_user.json','w') as file:
 		x = {
 			'id': user.pk,
 			'name': str(obj.first_name)+' '+str(obj.surname),
@@ -176,21 +176,21 @@ def Chat_Private(request):
 				_from= 1,
 				_to = 2
 			).save()
-			with open(r"C:\Users\Lenovo\Desktop\hay_profe-main\static\message.json",'r') as file:
+			with open("/home/hayprofe/hay_profe/message.json",'r') as file:
 				data_message = json.loads(file.read())
 			x = data_message
 			consec = len(Chat_Privates.objects.all())
 			data = {
 						"id":consec,
-						"sender": data['sender'], 
-						"body": data['body'], 
-						"time": data['time'], 
-						"status": data['status'], 
-						"recvId": data['recvId'], 
+						"sender": data['sender'],
+						"body": data['body'],
+						"time": data['time'],
+						"status": data['status'],
+						"recvId": data['recvId'],
 						"recvIsGroup": False
 					}
 			z = x.append(data)
-			with open(r"C:\Users\Lenovo\Desktop\hay_profe-main\static\message.json",'w') as file:
+			with open("/home/hayprofe/hay_profe/message.json",'w') as file:
 				json.dump(x,file)
 
 			return HttpResponse("Hola bebe")
@@ -213,8 +213,8 @@ def Chat_Private(request):
 					wallet_recvi.amount = SetMoneda(str(add), simbolo="US$", n_decimales=0)
 					wallet_recvi.save()
 					print(value_money)
-					
-					
+
+
 					#PAGA EL ESTUDIANTE
 					wallet_sender = Wallet.objects.get(user = Student.objects.get(email = request.session['student_email']))
 					less = float( str(wallet_sender.amount).replace(',','') ) - float(value_money.money)

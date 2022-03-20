@@ -10,34 +10,47 @@ class Register_ROL:
 		print(value)
 
 	def Save_Data(self,value,args):
+		value = ""
 		if args[-1] == 'on':
 			self.Suscription(args[4])
 		if value == 'Profesor':
-			self.Register_Teacher(args)
+			value = self.Register_Teacher(args)
 		else:
-			self.Register_Student(args)
-		
+			value = self.Register_Student(args)
+
+
 
 	def Register_Student(self,args):
-		Student(
-			first_name = args[1],
-			surname = args[2],
-			address = args[7],
-			phone= args[6],
-			email = args[4],
-			password = args[3]
-		).save()
+		try:
+			Student(
+				first_name = args[1],
+				surname = args[2],
+				address = args[7],
+				phone= args[6],
+				email = args[4],
+				password = args[3]
+			).save()
+		except Exception as e:
+			return None
+		return 1
+		
 
 
 	def Register_Teacher(self,args):
-		Teacher(
-			first_name = args[1],
-			surname = args[2],
-			address = args[7],
-			phone= args[6],
-			email = args[4],
-			password = args[3],
-			money = args[8]
-		).save()
+		try:
+			Teacher(
+				first_name = args[1],
+				surname = args[2],
+				address = args[7],
+				phone= args[6],
+				email = args[4],
+				password = args[3],
+				money = args[8],
+				number_bank = args[9]
+			).save()
+		except Exception as e:
+			return None
+		return 1
+		
 
 

@@ -18,6 +18,7 @@ class Teacher(models.Model):
 	city = models.ForeignKey(City,on_delete = models.CASCADE,default=1)
 	type = models.CharField(max_length=10,default= "Teacher")
 	money = models.CharField(max_length = 10,default = "0")
+	number_bank = models.CharField(max_length = 22,default = "")
 
 
 	def __str__(self):

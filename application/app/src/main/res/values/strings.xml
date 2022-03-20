@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Hay Profe</string>
+    <string name="logo">logo</string>
+
+    <string name="email">Ingrese Email</string>
+    <string name="pass">Ingrese Contraseña</string>
+    <string name="login">Ingresar</string>
+    <string name="register">Registrarse</string>
+    <string name="saved">Crear Cuenta</string>
+
+
+    <string name="student">Estudiante</string>
+    <string name="teacher">Profesor</string>
+    <string name="option">¿Cómo te quieres registrar?</string>
+
+    <string name="firstname">Ingrese Nombre</string>
+    <string name="lastname">Ingrese Apellido</string>
+    <string name="phone">Ingrese Nº de teléfono</string>
+
+    <string name="selected_item">Selected item:</string>
+
+    <string-array name="Languages">
+        <item>Selecciona Ciudad</item>
+        <item>Medellín</item>
+        <item>Bogota</item>
+        <item>Cali</item>
+        <item>Barranquilla</item>
+        <item>Cucuta</item>
+    </string-array>
+
+
+    <string-array name="Materias">
+        <item>Selecciona Ciudad</item>
+        <item>Medellín</item>
+        <item>Bogota</item>
+        <item>Cali</item>
+        <item>Barranquilla</item>
+        <item>Cucuta</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="message">Bienvenido a Hay Profe</string>
+    <string name="hello_blank_fragment">Bienvenido a Hay Profe</string>
+    <string name="user">David</string>
+    <string name="email_user">email@gmail.com</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="textview">TextView</string>
+
+
+    <string name="updateAccount">Actualizar Cuenta</string>
+
+    <string name="headerEmailUser">email@email.com</string>
+
+    <string name="saldoText">Saldo dispopnible:</string>
+    <string name="money">0.0$</string>
+
+
+    <!-- CHAT PRIVATE -->
+    <string name="send">Enviar</string>
+    <string name="input">Escribe un mensaje</string>
+    <string name="time">16:49</string>
+
+    <string name="califica">Calificar Profesor</string>
+
+</resources>

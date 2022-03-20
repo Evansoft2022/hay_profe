@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
 		============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'logoapp.ico' %}">
     <!-- Google Fonts
 		============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
@@ -61,62 +61,68 @@
 		============================================ -->
     <script src="{% static 'js/vendor/modernizr-2.8.3.min.js' %}"></script>
     <style>
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-          -webkit-appearance: none; 
-          margin: 0; 
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
         }
 
         input[type=number] { -moz-appearance:textfield; }
     </style>
 </head>
 
-<body>
+<body style="background-image: url('http://localhost:8000/static/fondo.png');
+            background-color: transparent;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;"><br>
+            <br>
+            <br>
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
 	<div class="error-pagewrap">
 		<div class="error-page-int">
-			<div class="text-center custom-login">
-				<h3>Registro</h3>
-                <p><span style="color: red;"><strong>*</strong></span>Campos Obligatorios</p>
-			</div>
+			<!-- <div class="text-center m-b-md custom-login">
+                <img  style="width:50%; heigth:50px;" class="rounded" alt="...">
+            </div><br> -->
 			<div class="content-error">
 				<div class="hpanel">
-                    <div class="panel-body">
+                    <div class="panel-body" style="border-radius:15px;box-shadow: 4px 2px #707070;">
                         <form method="post" id="loginForm">{% csrf_token %}
                             <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <label>Primer Nombre <span style="color: red;">*</span></label>
+                                <div class="form-group col-xs-6">
+                                    <label>Nombre <span style="color: red;">*</span></label>
                                     <input type="text" placeholder="Nombre" name="first_name" class="form-control">
                                 </div>
-                                <div class="form-group col-lg-6">
-                                    <label>Primer Apellido <span style="color: red;">*</span></label>
+                                <div class="form-group col-xs-6">
+                                    <label>Apellido <span style="color: red;">*</span></label>
                                     <input type="text" name="surname" placeholder="Apellido" class="form-control">
                                 </div>
-                                <div class="form-group col-lg-12">
+                                <div class="form-group col-xs-12">
                                         <label for="password3">Contraseña <span style="color: red;">*</span></label>
                                         <input type="password" name="password" class="form-control example3" id="password3" placeholder="Password">
                                     </div>
                                     <div class="form-group mg-b-pass">
                                         <div class="pwstrength_viewport_progress2"></div>
                                     </div>
-                                <div class="form-group col-lg-6">
-                                    <label>Correo electrónico <span style="color: red;">*</span> </label>
+                                <div class="form-group col-xs-6">
+                                    <label>E-mail <span style="color: red;">*</span> </label>
                                     <input type="email" name="email" placeholder="Correo electrónico" class="form-control">
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-xs-6">
                                     <label>Elija el rol</label>
                                     <select name="rol" class="form-control rol">
                                         <option>Estudiante</option>
                                         <option>Profesor</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-xs-6">
                                     <label>Teléfono <span style="color: red;">*</span></label>
                                     <input name="phone" class="form-control" placeholder="Teléfono">
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-xs-6">
                                     <label>Ciudad</label>
                                     <select name="address" class="form-control">
                                         {% for i in city %}
@@ -124,12 +130,19 @@
                                         {% endfor %}
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-12 aseroria" style="display: none;">
-                                    <label for="password3">Valor aseroria por minuto <span style="color: red;">*</span></label>
+                                <div class="form-group col-xs-12 aseroria" style="display: none;">
+                                    <label for="password3">Valor asesoria por minuto <span style="color: red;">*</span></label>
                                     <input type="number" name="money" class="form-control example3" id="asd" placeholder="Monto monetario">
                                 </div>
-                                <div class="checkbox col-lg-12">
-                                    <input type="checkbox" name="suscription" class="i-checks" checked>Suscríbete a nuestro boletín
+                                <div class="form-group col-xs-12 bank" style="display: none;">
+                                    <label for="password3">Número de Cuenta Bancaria<span style="color: red;">*</span></label>
+                                        <input type="number" name="number_bank" class="form-control example3" id="asd" placeholder="Número de Cuenta Bancaria">
+                                </div>
+                                <div class="checkbox col-xs-12">
+                                    <input type="checkbox" name="suscription" class="i-checks">Suscríbete a nuestro boletín
+                                </div>
+                                <div class="checkbox col-xs-12">
+                                    <input type="checkbox" checked name="suscription" class="i-checks" checked><span class="term">Aceptar Terminos y Condiciones</span>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -143,7 +156,7 @@
 			<div class="text-center login-footer">
                 <p>Copyright © 2022. All rights reserved. Developed by <a href="https://evansoft.pythonanywhere.com" target="_blank">Evansoft</a></p>
             </div>
-		</div>   
+		</div>
     </div>
     <!-- jquery
 		============================================ -->
@@ -178,7 +191,7 @@
     <script src="{% static 'js/metisMenu/metisMenu.min.js' %}"></script>
     <script src="{% static 'js/metisMenu/metisMenu-active.js' %}"></script>
 
-    <!-- pwstrength JS 
+    <!-- pwstrength JS
         ============================================ -->
     <script src="js/password-meter/pwstrength-bootstrap.min.js"></script>
     <script src="js/password-meter/zxcvbn.js"></script>
@@ -198,19 +211,39 @@
     <script src="{% static 'js/main.js' %}"></script>
     <!-- tawk chat JS
 		============================================ -->
-    <script src="{% static 'js/tawk-chat.js' %}"></script>
+    <!--script src="{% static 'js/tawk-chat.js' %}"></script-->
     <script>
         $(document).ready(function(){
+            let type = "";
+            $(".term").click(function(){
+                alert("Termino "+type)
+            })
             $("select").change(function(){
+                type = $(".rol").val()
                 if($(".rol").val() == 'Profesor' ){
                     $(".aseroria").css('display','block')
+                    $(".bank").css('display','block')
+
                 }
                 else{
-                    $(".aseroria").css('display','none')   
+                    $(".aseroria").css('display','none')
+                    $(".bank").css('display','none')
                 }
             })
         })
     </script>
+
+    <script src="{% static 'notify.min.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            if('{{error}}' == 'True'){
+                $.notify("El email ya se encuentra registrado");
+            }
+        })
+    </script>
+
+
+
 </body>
 
 </html>

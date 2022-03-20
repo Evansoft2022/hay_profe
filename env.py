@@ -1,6 +1,6 @@
 url = {
-		'user':"C:/Users/Lenovo/Desktop/hay_profe-main/static/user.json",
-		'contact':"C:/Users/Lenovo/Desktop/hay_profe-main/static/contact.json",
-		'list_group':"C:/Users/Lenovo/Desktop/hay_profe-main/static/group.json",
-		'message':"C:/Users/Lenovo/Desktop/hay_profe-main/static/message.json"
-	  }
+	'user':r"C:\Users\Lenovo\\Music\Hay_Profe\static\user.json",
+	'contact':r"C:\Users\Lenovo\\Music\Hay_Profe\static\\contact.json",
+	'list_group':r"C:\Users\Lenovo\\Music\Hay_Profe\static\group.json",
+	'message':r"C:\Users\Lenovo\\Music\Hay_Profe\static\message.json"
+}

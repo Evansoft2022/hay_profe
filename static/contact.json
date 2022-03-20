@@ -1,4 +1,1 @@
-[
-	{"id": 6, "name": "David David", "number": "123456789", "pic": "http://localhost:8000/media/Photo_Profile_Teacher/photo.jpg", "lastSeen": "Apr 29 2022 17:58:02", "type": "Profesor"}, 
-	{"id": 5, "name": "Kevin Kevin", "number": "456", "pic": "http://localhost:8000/media/Photo_Profile_Student/photo.jpg", "lastSeen": "Apr 29 2022 17:58:02", "type": "Estudiante"}
-]
+[{"id": 2, "name": "David David", "number": "31312313", "pic": "http://localhost:8000/media/Photo_Profile_Teacher/photo.jpg", "lastSeen": "Apr 29 2022 17:58:02", "type": "Profesor"}, {"id": 2, "name": "David David", "number": "31312313", "pic": "http://localhost:8000/media/Photo_Profile_Teacher/photo.jpg", "lastSeen": "Apr 29 2022 17:58:02", "type": "Profesor"}]
